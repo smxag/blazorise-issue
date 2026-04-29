@@ -1,0 +1,30 @@
+﻿@page "/"
+@inject IMessageService MessageService
+
+<Div Width="Width.Is50">
+    <DataGrid TItem="string" Data="@items" Editable>
+        <DataGridColumn TItem="string" Caption="Item" Width="Width.Auto">
+            <DisplayTemplate>
+                @context.Item
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridCommandColumn Width="Width.Px(50)">
+            <EditCommandTemplate>
+                <Button Color="Color.Primary" Size="Size.Small" Clicked="@(() => OnClicked())"><Icon Name="IconName.Edit" /></Button>
+            </EditCommandTemplate>
+            <NewCommandTemplate />
+            <DeleteCommandTemplate />
+        </DataGridCommandColumn>
+    </DataGrid>
+</Div>
+
+
+@code {
+
+    List<string> items = ["item1", "item2", "item3"];
+
+    async Task OnClicked()
+    {
+        _ = await MessageService.Confirm("Test", "Test");
+    }
+}
