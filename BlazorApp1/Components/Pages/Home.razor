@@ -8,7 +8,7 @@
                 @context.Item
             </DisplayTemplate>
         </DataGridColumn>
-        <DataGridCommandColumn Width="Width.Px(50)">
+        <DataGridCommandColumn Width="Width.Px(50)" PreventRowClick>
             <EditCommandTemplate>
                 <Button Color="Color.Primary" Size="Size.Small" Clicked="@(() => OnClicked())"><Icon Name="IconName.Edit" /></Button>
             </EditCommandTemplate>
